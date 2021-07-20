@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+input[type=submit] {
+    padding:10px 25px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin:20px
+    background:red;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 7px;
+    border-radius: 5px;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  padding: 10px;
+  height: 650px;
+}
+
+.left{
+  width: 40%;
+}
+
+.middle {
+  width: 60%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+
+}
+</style>
+</head>
+<body style="background-color:black;">
+<nav>
+<h1><font color="white"><center/>COVID-19 ANALYSIS</font></h1>
+<form action="/tweet" method="GET">
+    <input type="submit" value="Check this out!"/>
+</form>
+</nav>
+<div class="row">
+  <div class="column left" style="background-color:#ccc;">
+    <h3><font color="red"><center/>Top 15 countries</font></h3>
+        <table class="center">
+        <thead>
+            <tr>
+            <th scope="col">Country</th>
+            <th scope="col">Confirmed</th>
+                </tr>
+        </thead>
+        <tbody>
+    {% for pair in pairs %}
+    <tr>
+    <td>{{ pair[0]}}</td>
+    <td>{{ pair[1]}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+  </div>
+  <div class="column middle" style="background-color:#ccc;">
+    <h3><font color="red"><center/>Countrywise COVID-19 data</font></h3>
+        {{cmap|safe}}
+  </div>
+</div>
+
+</body>
+</html>
